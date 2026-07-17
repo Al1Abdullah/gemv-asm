@@ -1,8 +1,9 @@
 # SIMD Matrix-Vector Multiply Kernel (x86-64 NASM)
 
-![NASM](https://img.shields.io/badge/NASM-x86--64-blue)
-![AVX2](https://img.shields.io/badge/AVX2-FMA-orange)
-![C](https://img.shields.io/badge/harness-C-informational)
+![NASM](https://img.shields.io/badge/NASM-x86--64-556B2F?style=for-the-badge)
+![AVX2](https://img.shields.io/badge/AVX2-FMA-6B8E23?style=for-the-badge)
+![C](https://img.shields.io/badge/Harness-C-808000?style=for-the-badge&logo=c&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-x86--64-8FBC8F?style=for-the-badge&logo=linux&logoColor=black)
 
 A hand-written matrix-vector multiply (GEMV) kernel in raw x86-64 assembly, in two versions: a naive scalar baseline and an AVX2 + FMA vectorized version. No intrinsics, no compiler autovectorization. Both are called directly from C using the System V AMD64 calling convention and benchmarked against each other.
 
