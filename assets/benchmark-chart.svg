@@ -1,0 +1,72 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono', 'SF Mono', Consolas, 'Courier New', monospace">
+
+<defs>
+  <linearGradient id="barGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#ffb454"/>
+    <stop offset="100%" stop-color="#e08e2e"/>
+  </linearGradient>
+  <linearGradient id="dipGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#6b7a8a"/>
+    <stop offset="100%" stop-color="#5c6b7a"/>
+  </linearGradient>
+  <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#0d1219"/>
+    <stop offset="100%" stop-color="#0a0e14"/>
+  </linearGradient>
+</defs>
+
+<rect x="0" y="0" width="1200" height="700" fill="url(#bgGrad)"/>
+<text x="92" y="52" font-size="30" font-weight="700" fill="#e8edf2" letter-spacing="0.5">SIMD Speedup over Scalar Baseline</text>
+<text x="92" y="80" font-size="15" fill="#8b98a5">GEMV kernel &#183; x86-64 NASM &#183; AVX2 + FMA vs naive scalar &#183; measured, not projected</text>
+<rect x="830" y="34" width="14" height="14" rx="3" fill="url(#barGrad)"/>
+<text x="852" y="45" font-size="13" fill="#8b98a5">cache-resident / bandwidth-bound</text>
+<rect x="830" y="56" width="14" height="14" rx="3" fill="url(#dipGrad)"/>
+<text x="852" y="67" font-size="13" fill="#8b98a5">shared-VM noise outlier</text>
+<line x1="92" y1="570.0" x2="1160" y2="570.0" stroke="#1b2430" stroke-width="1"/>
+<text x="78" y="574.0" font-size="13" fill="#8b98a5" text-anchor="end">0&#215;</text>
+<line x1="92" y1="502.8" x2="1160" y2="502.8" stroke="#1b2430" stroke-width="1"/>
+<text x="78" y="506.8" font-size="13" fill="#8b98a5" text-anchor="end">2&#215;</text>
+<line x1="92" y1="435.6" x2="1160" y2="435.6" stroke="#1b2430" stroke-width="1"/>
+<text x="78" y="439.6" font-size="13" fill="#8b98a5" text-anchor="end">4&#215;</text>
+<line x1="92" y1="368.4" x2="1160" y2="368.4" stroke="#1b2430" stroke-width="1"/>
+<text x="78" y="372.4" font-size="13" fill="#8b98a5" text-anchor="end">6&#215;</text>
+<line x1="92" y1="301.2" x2="1160" y2="301.2" stroke="#1b2430" stroke-width="1"/>
+<text x="78" y="305.2" font-size="13" fill="#8b98a5" text-anchor="end">8&#215;</text>
+<line x1="92" y1="234.0" x2="1160" y2="234.0" stroke="#1b2430" stroke-width="1"/>
+<text x="78" y="238.0" font-size="13" fill="#8b98a5" text-anchor="end">10&#215;</text>
+<line x1="92" y1="166.8" x2="1160" y2="166.8" stroke="#1b2430" stroke-width="1"/>
+<text x="78" y="170.8" font-size="13" fill="#8b98a5" text-anchor="end">12&#215;</text>
+<line x1="92" y1="570" x2="1160" y2="570" stroke="#3a4552" stroke-width="1.5"/>
+<line x1="92" y1="301.2" x2="1160" y2="301.2" stroke="#5ccfe6" stroke-width="1.5" stroke-dasharray="6,5" opacity="0.85"/>
+<text x="1160" y="292.2" font-size="12.5" fill="#5ccfe6" text-anchor="end">8&#215; theoretical ceiling (256-bit AVX2 = 8 &#215; fp32 lanes)</text>
+<line x1="979.0" y1="144" x2="979.0" y2="576" stroke="#3a4552" stroke-width="1" stroke-dasharray="3,4"/>
+<text x="1048.0" y="134" font-size="11.5" fill="#8b98a5" text-anchor="middle">non-square</text>
+<rect x="165.0" y="179.5" width="78" height="390.5" rx="6" fill="url(#barGrad)" stroke="#e08e2e" stroke-width="1"/>
+<text x="204.0" y="169.5" font-size="16" font-weight="700" fill="#e8edf2" text-anchor="middle">11.62&#215;</text>
+<text x="204.0" y="596" font-size="13.5" fill="#8b98a5" text-anchor="middle">64×64</text>
+<rect x="277.0" y="209.0" width="78" height="361.0" rx="6" fill="url(#barGrad)" stroke="#e08e2e" stroke-width="1"/>
+<text x="316.0" y="199.0" font-size="16" font-weight="700" fill="#e8edf2" text-anchor="middle">10.74&#215;</text>
+<text x="316.0" y="596" font-size="13.5" fill="#8b98a5" text-anchor="middle">128×128</text>
+<rect x="389.0" y="406.2" width="78" height="163.8" rx="6" fill="url(#dipGrad)" stroke="#3e4a56" stroke-width="1"/>
+<text x="428.0" y="396.2" font-size="16" font-weight="700" fill="#e8edf2" text-anchor="middle">4.88&#215;</text>
+<text x="428.0" y="596" font-size="13.5" fill="#8b98a5" text-anchor="middle">256×256</text>
+<text x="428.0" y="614" font-size="11" fill="#5c6b7a" text-anchor="middle">(noise, see notes)</text>
+<rect x="501.0" y="302.2" width="78" height="267.8" rx="6" fill="url(#barGrad)" stroke="#e08e2e" stroke-width="1"/>
+<text x="540.0" y="292.2" font-size="16" font-weight="700" fill="#e8edf2" text-anchor="middle">7.97&#215;</text>
+<text x="540.0" y="596" font-size="13.5" fill="#8b98a5" text-anchor="middle">512×512</text>
+<rect x="613.0" y="280.3" width="78" height="289.7" rx="6" fill="url(#barGrad)" stroke="#e08e2e" stroke-width="1"/>
+<text x="652.0" y="270.3" font-size="16" font-weight="700" fill="#e8edf2" text-anchor="middle">8.62&#215;</text>
+<text x="652.0" y="596" font-size="13.5" fill="#8b98a5" text-anchor="middle">1024×1024</text>
+<rect x="725.0" y="314.9" width="78" height="255.1" rx="6" fill="url(#barGrad)" stroke="#e08e2e" stroke-width="1"/>
+<text x="764.0" y="304.9" font-size="16" font-weight="700" fill="#e8edf2" text-anchor="middle">7.59&#215;</text>
+<text x="764.0" y="596" font-size="13.5" fill="#8b98a5" text-anchor="middle">2048×2048</text>
+<rect x="837.0" y="351.7" width="78" height="218.3" rx="6" fill="url(#barGrad)" stroke="#e08e2e" stroke-width="1"/>
+<text x="876.0" y="341.7" font-size="16" font-weight="700" fill="#e8edf2" text-anchor="middle">6.50&#215;</text>
+<text x="876.0" y="596" font-size="13.5" fill="#8b98a5" text-anchor="middle">4096×4096</text>
+<rect x="1009.0" y="321.4" width="78" height="248.6" rx="6" fill="url(#barGrad)" stroke="#e08e2e" stroke-width="1"/>
+<text x="1048.0" y="311.4" font-size="16" font-weight="700" fill="#e8edf2" text-anchor="middle">7.40&#215;</text>
+<text x="1048.0" y="596" font-size="13.5" fill="#8b98a5" text-anchor="middle">4096×1000</text>
+<text x="20" y="360.0" font-size="13.5" fill="#8b98a5" text-anchor="middle" transform="rotate(-90 20 360.0)">Speedup vs scalar (&#215;)</text>
+<text x="92" y="666" font-size="12.5" fill="#8b98a5">Matrix size (rows &#215; cols) &#8212; GitHub Codespaces VM, AVX2 + FMA, averaged over hundreds&#8211;thousands of iterations per size.</text>
+<text x="92" y="686" font-size="12.5" fill="#8b98a5">Trend: compute-bound at small sizes (near 8&#215; ceiling) &#8594; bandwidth-bound as matrices outgrow cache.</text>
+</svg>
