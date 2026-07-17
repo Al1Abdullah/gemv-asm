@@ -1,75 +1,87 @@
-<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono', 'SF Mono', Consolas, 'Courier New', monospace">
+<svg viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono','SF Mono',Consolas,'Courier New',monospace">
 
-<rect x="0" y="0" width="1200" height="700" fill="#0d1117"/>
+<rect x="0" y="0" width="1200" height="640" fill="#0b0d12"/>
 
-<text x="92" y="52" font-size="26" font-weight="700" fill="#e6edf3">SIMD Speedup over Scalar Baseline</text>
-<text x="92" y="78" font-size="14" fill="#8b949e">GEMV kernel &#183; x86-64 NASM &#183; AVX2 + FMA vs naive scalar &#183; measured, not projected</text>
+<text x="64" y="46" font-size="22" font-weight="600" fill="#e6edf3">SIMD Speedup over Scalar Baseline</text>
+<text x="64" y="68" font-size="13" fill="#8b949e">GEMV kernel &#183; AVX2 + FMA vs naive scalar, measured</text>
 
-<rect x="830" y="34" width="12" height="12" rx="2" fill="#58a6ff"/>
-<text x="850" y="44" font-size="12.5" fill="#8b949e">cache-resident / bandwidth-bound</text>
-<rect x="830" y="56" width="12" height="12" rx="2" fill="#30363d"/>
-<text x="850" y="66" font-size="12.5" fill="#8b949e">shared-VM noise outlier</text>
+<rect x="980" y="30" width="10" height="10" fill="#58a6ff"/>
+<text x="996" y="39" font-size="11.5" fill="#8b949e">measured</text>
+<rect x="980" y="48" width="10" height="10" fill="#30363d"/>
+<text x="996" y="57" font-size="11.5" fill="#8b949e">noise outlier</text>
 
-<g stroke="#21262d" stroke-width="1">
-<line x1="92" y1="570.0" x2="1160" y2="570.0"/>
-<line x1="92" y1="502.8" x2="1160" y2="502.8"/>
-<line x1="92" y1="435.6" x2="1160" y2="435.6"/>
-<line x1="92" y1="368.4" x2="1160" y2="368.4"/>
-<line x1="92" y1="301.2" x2="1160" y2="301.2"/>
-<line x1="92" y1="234.0" x2="1160" y2="234.0"/>
-<line x1="92" y1="166.8" x2="1160" y2="166.8"/>
-</g>
-<g font-size="12.5" fill="#8b949e" text-anchor="end">
-<text x="78" y="574.0">0&#215;</text>
-<text x="78" y="506.8">2&#215;</text>
-<text x="78" y="439.6">4&#215;</text>
-<text x="78" y="372.4">6&#215;</text>
-<text x="78" y="305.2">8&#215;</text>
-<text x="78" y="238.0">10&#215;</text>
-<text x="78" y="170.8">12&#215;</text>
+<g stroke="#1c2128" stroke-width="1">
+<line x1="160" y1="110" x2="160" y2="576"/>
+<line x1="320" y1="110" x2="320" y2="576"/>
+<line x1="480" y1="110" x2="480" y2="576"/>
+<line x1="640" y1="110" x2="640" y2="576"/>
+<line x1="800" y1="110" x2="800" y2="576"/>
+<line x1="960" y1="110" x2="960" y2="576"/>
+<line x1="1120" y1="110" x2="1120" y2="576"/>
 </g>
 
-<line x1="92" y1="570" x2="1160" y2="570" stroke="#30363d" stroke-width="1.5"/>
-<line x1="92" y1="301.2" x2="1160" y2="301.2" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7"/>
-<text x="1160" y="292.2" font-size="12" fill="#58a6ff" text-anchor="end">8&#215; theoretical ceiling (256-bit AVX2 = 8 &#215; fp32 lanes)</text>
+<line x1="800" y1="100" x2="800" y2="576" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7"/>
+<text x="800" y="92" font-size="11.5" fill="#58a6ff" text-anchor="middle">8&#215; ceiling (256-bit / fp32)</text>
 
-<line x1="979.0" y1="144" x2="979.0" y2="576" stroke="#30363d" stroke-width="1" stroke-dasharray="3,4"/>
-<text x="1048.0" y="134" font-size="11" fill="#6e7681" text-anchor="middle">non-square</text>
+<line x1="160" y1="576" x2="1120" y2="576" stroke="#30363d" stroke-width="1.5"/>
+<g font-size="11.5" fill="#6e7681" text-anchor="middle">
+<text x="160" y="596">0&#215;</text>
+<text x="320" y="596">2&#215;</text>
+<text x="480" y="596">4&#215;</text>
+<text x="640" y="596">6&#215;</text>
+<text x="800" y="596">8&#215;</text>
+<text x="960" y="596">10&#215;</text>
+<text x="1120" y="596">12&#215;</text>
+</g>
 
-<rect x="165.0" y="179.5" width="78" height="390.5" rx="3" fill="#58a6ff"/>
-<text x="204.0" y="169.5" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">11.62&#215;</text>
-<text x="204.0" y="596" font-size="13" fill="#8b949e" text-anchor="middle">64&#215;64</text>
+<g>
+<text x="150" y="158" font-size="13" fill="#8b949e" text-anchor="end">64&#215;64</text>
+<rect x="160" y="140" width="929.6" height="28" rx="2" fill="#58a6ff"/>
+<text x="1099.6" y="158" font-size="13" font-weight="600" fill="#e6edf3">11.62&#215;</text>
+</g>
 
-<rect x="277.0" y="209.0" width="78" height="361.0" rx="3" fill="#58a6ff"/>
-<text x="316.0" y="199.0" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">10.74&#215;</text>
-<text x="316.0" y="596" font-size="13" fill="#8b949e" text-anchor="middle">128&#215;128</text>
+<g>
+<text x="150" y="212" font-size="13" fill="#8b949e" text-anchor="end">128&#215;128</text>
+<rect x="160" y="194" width="859.2" height="28" rx="2" fill="#58a6ff"/>
+<text x="1029.2" y="212" font-size="13" font-weight="600" fill="#e6edf3">10.74&#215;</text>
+</g>
 
-<rect x="389.0" y="406.2" width="78" height="163.8" rx="3" fill="#30363d"/>
-<text x="428.0" y="396.2" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">4.88&#215;</text>
-<text x="428.0" y="596" font-size="13" fill="#8b949e" text-anchor="middle">256&#215;256</text>
-<text x="428.0" y="614" font-size="10.5" fill="#6e7681" text-anchor="middle">(noise, see notes)</text>
+<g>
+<text x="150" y="266" font-size="13" fill="#8b949e" text-anchor="end">256&#215;256</text>
+<rect x="160" y="248" width="390.4" height="28" rx="2" fill="#30363d"/>
+<text x="560.4" y="266" font-size="13" font-weight="600" fill="#8b949e">4.88&#215; (noise)</text>
+</g>
 
-<rect x="501.0" y="302.2" width="78" height="267.8" rx="3" fill="#58a6ff"/>
-<text x="540.0" y="292.2" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">7.97&#215;</text>
-<text x="540.0" y="596" font-size="13" fill="#8b949e" text-anchor="middle">512&#215;512</text>
+<g>
+<text x="150" y="320" font-size="13" fill="#8b949e" text-anchor="end">512&#215;512</text>
+<rect x="160" y="302" width="637.6" height="28" rx="2" fill="#58a6ff"/>
+<text x="807.6" y="320" font-size="13" font-weight="600" fill="#e6edf3">7.97&#215;</text>
+</g>
 
-<rect x="613.0" y="280.3" width="78" height="289.7" rx="3" fill="#58a6ff"/>
-<text x="652.0" y="270.3" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">8.62&#215;</text>
-<text x="652.0" y="596" font-size="13" fill="#8b949e" text-anchor="middle">1024&#215;1024</text>
+<g>
+<text x="150" y="374" font-size="13" fill="#8b949e" text-anchor="end">1024&#215;1024</text>
+<rect x="160" y="356" width="689.6" height="28" rx="2" fill="#58a6ff"/>
+<text x="859.6" y="374" font-size="13" font-weight="600" fill="#e6edf3">8.62&#215;</text>
+</g>
 
-<rect x="725.0" y="314.9" width="78" height="255.1" rx="3" fill="#58a6ff"/>
-<text x="764.0" y="304.9" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">7.59&#215;</text>
-<text x="764.0" y="596" font-size="13" fill="#8b949e" text-anchor="middle">2048&#215;2048</text>
+<g>
+<text x="150" y="428" font-size="13" fill="#8b949e" text-anchor="end">2048&#215;2048</text>
+<rect x="160" y="410" width="607.2" height="28" rx="2" fill="#58a6ff"/>
+<text x="777.2" y="428" font-size="13" font-weight="600" fill="#e6edf3">7.59&#215;</text>
+</g>
 
-<rect x="837.0" y="351.7" width="78" height="218.3" rx="3" fill="#58a6ff"/>
-<text x="876.0" y="341.7" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">6.50&#215;</text>
-<text x="876.0" y="596" font-size="13" fill="#8b949e" text-anchor="middle">4096&#215;4096</text>
+<g>
+<text x="150" y="482" font-size="13" fill="#8b949e" text-anchor="end">4096&#215;4096</text>
+<rect x="160" y="464" width="520.0" height="28" rx="2" fill="#58a6ff"/>
+<text x="690.0" y="482" font-size="13" font-weight="600" fill="#e6edf3">6.50&#215;</text>
+</g>
 
-<rect x="1009.0" y="321.4" width="78" height="248.6" rx="3" fill="#58a6ff"/>
-<text x="1048.0" y="311.4" font-size="15" font-weight="700" fill="#e6edf3" text-anchor="middle">7.40&#215;</text>
-<text x="1048.0" y="596" font-size="13" fill="#8b949e" text-anchor="middle">4096&#215;1000</text>
+<g>
+<text x="150" y="536" font-size="13" fill="#8b949e" text-anchor="end">4096&#215;1000</text>
+<rect x="160" y="518" width="592.0" height="28" rx="2" fill="#58a6ff"/>
+<text x="762.0" y="536" font-size="13" font-weight="600" fill="#e6edf3">7.40&#215;</text>
+</g>
 
-<text x="20" y="360.0" font-size="13" fill="#8b949e" text-anchor="middle" transform="rotate(-90 20 360.0)">Speedup vs scalar (&#215;)</text>
-<text x="92" y="666" font-size="12" fill="#6e7681">Matrix size (rows &#215; cols) &#8212; GitHub Codespaces VM, AVX2 + FMA, averaged over hundreds&#8211;thousands of iterations per size.</text>
-<text x="92" y="686" font-size="12" fill="#6e7681">Trend: compute-bound at small sizes (near 8&#215; ceiling) &#8594; bandwidth-bound as matrices outgrow cache.</text>
+<text x="64" y="620" font-size="11.5" fill="#6e7681">Averaged over hundreds&#8211;thousands of iterations per size. Compute-bound near 8&#215; ceiling at small sizes &#8594; bandwidth-bound as matrices outgrow cache.</text>
+
 </svg>
