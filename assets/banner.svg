@@ -1,60 +1,50 @@
 <svg viewBox="0 0 1400 360" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono','SF Mono',Consolas,'Courier New',monospace">
 
-<defs>
-  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-    <stop offset="0%" stop-color="#0d1420"/>
-    <stop offset="100%" stop-color="#0a0e14"/>
-  </linearGradient>
-  <linearGradient id="simdCell" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#ffb454"/>
-    <stop offset="100%" stop-color="#e08e2e"/>
-  </linearGradient>
-  <pattern id="hexgrid" width="42" height="42" patternUnits="userSpaceOnUse">
-    <text x="2" y="16" font-size="11" fill="#141b26">01</text>
-    <text x="2" y="34" font-size="11" fill="#141b26">10</text>
-  </pattern>
-</defs>
+<rect x="0" y="0" width="1400" height="360" fill="#0d1117"/>
+<rect x="0" y="0" width="1400" height="2" fill="#58a6ff"/>
 
-<rect x="0" y="0" width="1400" height="360" fill="url(#bg)"/>
-<rect x="0" y="0" width="1400" height="360" fill="url(#hexgrid)" opacity="0.35"/>
-<rect x="0" y="0" width="1400" height="3" fill="#ffb454" opacity="0.9"/>
-<text x="64" y="98" font-size="15" fill="#5ccfe6" letter-spacing="3">// x86-64 &#183; NASM &#183; SYSTEM V ABI</text>
-<text x="64" y="160" font-size="64" font-weight="700" fill="#eef2f6" letter-spacing="1">GEMV<tspan fill="#ffb454">.asm</tspan></text>
-<text x="64" y="196" font-size="19" fill="#8b98a5">Hand-written matrix&#8211;vector multiply &#8212; scalar baseline vs AVX2 + FMA</text>
-<text x="64" y="238" font-size="16" fill="#8b98a5">measured speedup</text>
-<text x="294" y="242" font-size="30" font-weight="700" fill="#ffb454">6.5&#215;&#8211;11.6&#215;</text>
-<text x="64" y="270" font-size="14" fill="#8b98a5">no intrinsics &#183; no autovectorization &#183; called from C via extern "C"</text>
-<line x1="64" y1="296" x2="624" y2="296" stroke="#2a3441" stroke-width="1"/>
-<text x="64" y="322" font-size="13" fill="#8b98a5">src/matvec_scalar.asm &#183; src/matvec_simd.asm &#183; bench/main.c</text>
-<text x="800" y="72" font-size="13.5" fill="#8b98a5">xmm &#8212; scalar baseline</text>
-<rect x="800.0" y="84" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="829.4" y="112.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<rect x="858.8" y="84" width="55.8" height="46" rx="5" fill="none" stroke="#4d5a68" stroke-width="1.5" stroke-dasharray="3,4"/>
-<rect x="917.5" y="84" width="55.8" height="46" rx="5" fill="none" stroke="#4d5a68" stroke-width="1.5" stroke-dasharray="3,4"/>
-<rect x="976.2" y="84" width="55.8" height="46" rx="5" fill="none" stroke="#4d5a68" stroke-width="1.5" stroke-dasharray="3,4"/>
-<rect x="1035.0" y="84" width="55.8" height="46" rx="5" fill="none" stroke="#4d5a68" stroke-width="1.5" stroke-dasharray="3,4"/>
-<rect x="1093.8" y="84" width="55.8" height="46" rx="5" fill="none" stroke="#4d5a68" stroke-width="1.5" stroke-dasharray="3,4"/>
-<rect x="1152.5" y="84" width="55.8" height="46" rx="5" fill="none" stroke="#4d5a68" stroke-width="1.5" stroke-dasharray="3,4"/>
-<rect x="1211.2" y="84" width="55.8" height="46" rx="5" fill="none" stroke="#4d5a68" stroke-width="1.5" stroke-dasharray="3,4"/>
-<text x="1270" y="152" font-size="13" fill="#8b98a5" text-anchor="end">1 lane processed per instruction</text>
-<text x="800" y="168" font-size="13.5" fill="#5ccfe6">ymm &#8212; AVX2 + FMA (vfmadd231ps)</text>
-<rect x="800.0" y="182" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="829.4" y="210.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<rect x="858.8" y="182" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="888.1" y="210.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<rect x="917.5" y="182" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="946.9" y="210.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<rect x="976.2" y="182" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="1005.6" y="210.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<rect x="1035.0" y="182" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="1064.4" y="210.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<rect x="1093.8" y="182" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="1123.1" y="210.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<rect x="1152.5" y="182" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="1181.9" y="210.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<rect x="1211.2" y="182" width="55.8" height="46" rx="5" fill="url(#simdCell)" stroke="#e08e2e"/>
-<text x="1240.6" y="210.0" font-size="13" fill="#231506" text-anchor="middle" font-weight="700">fp32</text>
-<text x="1270" y="250" font-size="13" fill="#8b98a5" text-anchor="end">8 lanes &#215; 32-bit = 256-bit register, one FMA per cycle</text>
-<path d="M 774 84 q -14 0 -14 20 v 58 q 0 20 14 20" stroke="#5ccfe6" stroke-width="2" fill="none" stroke-linecap="round"/>
-<text x="752" y="162.0" font-size="20" font-weight="700" fill="#5ccfe6" text-anchor="middle">8&#215;</text>
+<text x="64" y="76" font-size="13" fill="#58a6ff" letter-spacing="2">x86-64 &#183; NASM &#183; SYSTEM V ABI</text>
+
+<text x="64" y="146" font-size="56" font-weight="700" fill="#e6edf3">GEMV<tspan fill="#58a6ff">.asm</tspan></text>
+<text x="64" y="178" font-size="16" fill="#8b949e">Hand-written matrix&#8211;vector multiply &#8212; scalar baseline vs AVX2 + FMA</text>
+
+<line x1="64" y1="204" x2="600" y2="204" stroke="#21262d" stroke-width="1"/>
+
+<text x="64" y="240" font-size="13" fill="#8b949e">measured speedup</text>
+<text x="64" y="270" font-size="34" font-weight="700" fill="#58a6ff">6.5&#215;&#8211;11.6&#215;</text>
+<text x="64" y="296" font-size="12.5" fill="#6e7681">no intrinsics &#183; no autovectorization &#183; called from C via extern "C"</text>
+
+<line x1="64" y1="316" x2="600" y2="316" stroke="#21262d" stroke-width="1"/>
+<text x="64" y="338" font-size="12" fill="#6e7681">src/matvec_scalar.asm &#183; src/matvec_simd.asm &#183; bench/main.c</text>
+
+<text x="800" y="76" font-size="12.5" fill="#8b949e">scalar &#8212; xmm, 1 lane / instruction</text>
+<rect x="800" y="88" width="50" height="40" rx="3" fill="#58a6ff"/>
+<text x="825" y="113" font-size="11.5" fill="#0d1117" text-anchor="middle" font-weight="700">fp32</text>
+<g fill="none" stroke="#30363d" stroke-width="1.5">
+<rect x="860" y="88" width="50" height="40" rx="3"/>
+<rect x="920" y="88" width="50" height="40" rx="3"/>
+<rect x="980" y="88" width="50" height="40" rx="3"/>
+<rect x="1040" y="88" width="50" height="40" rx="3"/>
+<rect x="1100" y="88" width="50" height="40" rx="3"/>
+<rect x="1160" y="88" width="50" height="40" rx="3"/>
+<rect x="1220" y="88" width="50" height="40" rx="3"/>
+</g>
+
+<text x="800" y="168" font-size="12.5" fill="#8b949e">AVX2 + FMA &#8212; ymm, 8 lanes / instruction</text>
+<g fill="#58a6ff">
+<rect x="800" y="180" width="50" height="40" rx="3"/>
+<rect x="860" y="180" width="50" height="40" rx="3"/>
+<rect x="920" y="180" width="50" height="40" rx="3"/>
+<rect x="980" y="180" width="50" height="40" rx="3"/>
+<rect x="1040" y="180" width="50" height="40" rx="3"/>
+<rect x="1100" y="180" width="50" height="40" rx="3"/>
+<rect x="1160" y="180" width="50" height="40" rx="3"/>
+<rect x="1220" y="180" width="50" height="40" rx="3"/>
+</g>
+<g font-size="11.5" fill="#0d1117" text-anchor="middle" font-weight="700">
+<text x="825" y="205">fp32</text><text x="885" y="205">fp32</text><text x="945" y="205">fp32</text><text x="1005" y="205">fp32</text>
+<text x="1065" y="205">fp32</text><text x="1125" y="205">fp32</text><text x="1185" y="205">fp32</text><text x="1245" y="205">fp32</text>
+</g>
+
+<text x="1270" y="250" font-size="12.5" fill="#6e7681" text-anchor="end">256-bit register &#8212; one FMA per cycle</text>
 </svg>
