@@ -1,50 +1,203 @@
-<svg viewBox="0 0 1400 360" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono','SF Mono',Consolas,'Courier New',monospace">
+<svg viewBox="0 0 1600 578" xmlns="http://www.w3.org/2000/svg" font-family="&apos;DejaVu Sans Mono&apos;,&apos;Liberation Mono&apos;,Consolas,monospace">
+<defs>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="3.2" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="translate(0,0)">
+    <rect width="4" height="2" fill="#000000"/>
+    <rect y="2" width="4" height="2" fill="#001a00"/>
+  </pattern>
+  <radialGradient id="vignette" cx="50%" cy="45%" r="75%">
+    <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+  </radialGradient>
+</defs>
+<style>
 
-<rect x="0" y="0" width="1400" height="360" fill="#0d1117"/>
-<rect x="0" y="0" width="1400" height="2" fill="#58a6ff"/>
+@keyframes flicker {
+  0%   { opacity: 1; }
+  42%  { opacity: 0.96; }
+  44%  { opacity: 1; }
+  71%  { opacity: 0.985; }
+  100% { opacity: 1; }
+}
+@keyframes scandrift {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(40px); }
+}
+@keyframes blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+#crt-content { animation: flicker 5.3s ease-in-out infinite; }
+#scan-layer  { animation: scandrift 6s linear infinite; }
+.cursor      { animation: blink 0.85s steps(1,end) infinite; }
 
-<text x="64" y="76" font-size="13" fill="#58a6ff" letter-spacing="2">x86-64 &#183; NASM &#183; SYSTEM V ABI</text>
 
-<text x="64" y="146" font-size="56" font-weight="700" fill="#e6edf3">GEMV<tspan fill="#58a6ff">.asm</tspan></text>
-<text x="64" y="178" font-size="16" fill="#8b949e">Hand-written matrix&#8211;vector multiply &#8212; scalar baseline vs AVX2 + FMA</text>
+@keyframes reveal0 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  0.00%  { clip-path: inset(0 100% 0 0); }
+  3.29%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line0 { clip-path: inset(0 100% 0 0); animation: reveal0 13s steps(24,end) 1 forwards; }
 
-<line x1="64" y1="204" x2="600" y2="204" stroke="#21262d" stroke-width="1"/>
 
-<text x="64" y="240" font-size="13" fill="#8b949e">measured speedup</text>
-<text x="64" y="270" font-size="34" font-weight="700" fill="#58a6ff">6.5&#215;&#8211;11.6&#215;</text>
-<text x="64" y="296" font-size="12.5" fill="#6e7681">no intrinsics &#183; no autovectorization &#183; called from C via extern "C"</text>
+@keyframes reveal1 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  3.87%  { clip-path: inset(0 100% 0 0); }
+  7.15%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line1 { clip-path: inset(0 100% 0 0); animation: reveal1 13s steps(24,end) 1 forwards; }
 
-<line x1="64" y1="316" x2="600" y2="316" stroke="#21262d" stroke-width="1"/>
-<text x="64" y="338" font-size="12" fill="#6e7681">src/matvec_scalar.asm &#183; src/matvec_simd.asm &#183; bench/main.c</text>
 
-<text x="800" y="76" font-size="12.5" fill="#8b949e">scalar &#8212; xmm, 1 lane / instruction</text>
-<rect x="800" y="88" width="50" height="40" rx="3" fill="#58a6ff"/>
-<text x="825" y="113" font-size="11.5" fill="#0d1117" text-anchor="middle" font-weight="700">fp32</text>
-<g fill="none" stroke="#30363d" stroke-width="1.5">
-<rect x="860" y="88" width="50" height="40" rx="3"/>
-<rect x="920" y="88" width="50" height="40" rx="3"/>
-<rect x="980" y="88" width="50" height="40" rx="3"/>
-<rect x="1040" y="88" width="50" height="40" rx="3"/>
-<rect x="1100" y="88" width="50" height="40" rx="3"/>
-<rect x="1160" y="88" width="50" height="40" rx="3"/>
-<rect x="1220" y="88" width="50" height="40" rx="3"/>
+@keyframes reveal2 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  7.73%  { clip-path: inset(0 100% 0 0); }
+  11.02%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line2 { clip-path: inset(0 100% 0 0); animation: reveal2 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal3 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  11.60%  { clip-path: inset(0 100% 0 0); }
+  14.89%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line3 { clip-path: inset(0 100% 0 0); animation: reveal3 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal4 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  15.47%  { clip-path: inset(0 100% 0 0); }
+  18.75%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line4 { clip-path: inset(0 100% 0 0); animation: reveal4 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal5 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  19.33%  { clip-path: inset(0 100% 0 0); }
+  22.62%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line5 { clip-path: inset(0 100% 0 0); animation: reveal5 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal6 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  23.20%  { clip-path: inset(0 100% 0 0); }
+  26.49%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line6 { clip-path: inset(0 100% 0 0); animation: reveal6 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal7 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  27.07%  { clip-path: inset(0 100% 0 0); }
+  30.35%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line7 { clip-path: inset(0 100% 0 0); animation: reveal7 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal8 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  30.93%  { clip-path: inset(0 100% 0 0); }
+  34.22%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line8 { clip-path: inset(0 100% 0 0); animation: reveal8 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal9 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  34.80%  { clip-path: inset(0 100% 0 0); }
+  38.09%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line9 { clip-path: inset(0 100% 0 0); animation: reveal9 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal10 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  38.67%  { clip-path: inset(0 100% 0 0); }
+  41.95%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line10 { clip-path: inset(0 100% 0 0); animation: reveal10 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal11 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  42.53%  { clip-path: inset(0 100% 0 0); }
+  45.82%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line11 { clip-path: inset(0 100% 0 0); animation: reveal11 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal12 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  46.40%  { clip-path: inset(0 100% 0 0); }
+  49.69%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line12 { clip-path: inset(0 100% 0 0); animation: reveal12 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal13 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  50.27%  { clip-path: inset(0 100% 0 0); }
+  53.55%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line13 { clip-path: inset(0 100% 0 0); animation: reveal13 13s steps(24,end) 1 forwards; }
+
+
+@keyframes reveal14 {
+  0%   { clip-path: inset(0 100% 0 0); }
+  54.13%  { clip-path: inset(0 100% 0 0); }
+  57.42%  { clip-path: inset(0 0% 0 0); }
+  100% { clip-path: inset(0 0% 0 0); }
+}
+.line14 { clip-path: inset(0 100% 0 0); animation: reveal14 13s steps(24,end) 1 forwards; }
+
+.cursor-wrap { opacity: 0; animation: cursorshow 13s steps(1,end) 1 forwards; }
+
+@keyframes cursorshow {
+  0% { opacity: 0; }
+  57.42% { opacity: 0; }
+  57.92% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+</style>
+<rect x="0" y="0" width="1600" height="578" fill="#020a02"/>
+<g id="scan-layer"><rect x="-10" y="-10" width="1620" height="638" fill="url(#scanlines)" opacity="0.5"/></g>
+<g id="crt-content" filter="url(#glow)">
+<g class="line0"><text x="70" y="82" font-size="52" font-weight="bold" fill="#3dff5c" xml:space="preserve">GEMV.ASM</text></g>
+<g class="line1"><text x="72" y="112" font-size="15" fill="#1a8a2e" letter-spacing="2" xml:space="preserve">HAND-WRITTEN X86-64 SIMD KERNEL  //  AVX2 + FMA  //  NASM</text></g>
+<g class="line2"><text x="70" y="138" font-size="20" fill="#1a8a2e" xml:space="preserve">+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+.</text></g>
+<g class="line3"><text x="70" y="178" font-size="20" fill="#3dff5c" xml:space="preserve">DO                                            GEMV kernel entry point</text></g>
+<g class="line4"><text x="70" y="208" font-size="20" fill="#3dff5c" xml:space="preserve">   USING YMM,8                                8 lanes of fp32 per register</text></g>
+<g class="line5"><text x="70" y="238" font-size="20" fill="#3dff5c" xml:space="preserve">   DO UNTIL=(GE,I,COLS_ALIGNED)               Vectorized loop, 8 cols per iteration</text></g>
+<g class="line6"><text x="70" y="268" font-size="20" fill="#3dff5c" xml:space="preserve">      VFMADD231PS YMM0,YMM1,YMM2              Fused multiply-add, one cycle per iter</text></g>
+<g class="line7"><text x="70" y="298" font-size="20" fill="#3dff5c" xml:space="preserve">   COMPARE SUM,VS=MATVEC_SCALAR               Baseline: one lane per instruction</text></g>
+<g class="line8"><text x="70" y="328" font-size="20" fill="#3dff5c" xml:space="preserve">   SELECT CLI,MATRIX_SIZE                     Cache-resident or bandwidth-bound?</text></g>
+<g class="line9"><text x="70" y="358" font-size="20" fill="#3dff5c" xml:space="preserve">      WHEN (SMALL)  RESULT SPEEDUP=11.6X      64x64, stays in L1/L2 cache</text></g>
+<g class="line10"><text x="70" y="388" font-size="20" fill="#3dff5c" xml:space="preserve">      WHEN (LARGE)  RESULT SPEEDUP=6.5X       4096x4096, memory-bandwidth bound</text></g>
+<g class="line11"><text x="70" y="418" font-size="20" fill="#3dff5c" xml:space="preserve">RETURN                                        System V AMD64 ABI, called from C</text></g>
+<g class="line12"><text x="70" y="454" font-size="20" fill="#1a8a2e" xml:space="preserve">+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+.</text></g>
+<g class="line13"><text x="70" y="492" font-size="15" fill="#1a8a2e" letter-spacing="1" xml:space="preserve">measured: 6.5x-11.6x faster than scalar  //  src/matvec_simd.asm  //  src/matvec_scalar.asm</text></g>
+<g class="line14"><text x="70" y="536" font-size="19" fill="#3dff5c" xml:space="preserve">root@gemv-asm:~$ </text></g>
+<g class="cursor-wrap"><rect class="cursor" x="274.3" y="520" width="11" height="19" fill="#3dff5c"/></g>
 </g>
-
-<text x="800" y="168" font-size="12.5" fill="#8b949e">AVX2 + FMA &#8212; ymm, 8 lanes / instruction</text>
-<g fill="#58a6ff">
-<rect x="800" y="180" width="50" height="40" rx="3"/>
-<rect x="860" y="180" width="50" height="40" rx="3"/>
-<rect x="920" y="180" width="50" height="40" rx="3"/>
-<rect x="980" y="180" width="50" height="40" rx="3"/>
-<rect x="1040" y="180" width="50" height="40" rx="3"/>
-<rect x="1100" y="180" width="50" height="40" rx="3"/>
-<rect x="1160" y="180" width="50" height="40" rx="3"/>
-<rect x="1220" y="180" width="50" height="40" rx="3"/>
-</g>
-<g font-size="11.5" fill="#0d1117" text-anchor="middle" font-weight="700">
-<text x="825" y="205">fp32</text><text x="885" y="205">fp32</text><text x="945" y="205">fp32</text><text x="1005" y="205">fp32</text>
-<text x="1065" y="205">fp32</text><text x="1125" y="205">fp32</text><text x="1185" y="205">fp32</text><text x="1245" y="205">fp32</text>
-</g>
-
-<text x="1270" y="250" font-size="12.5" fill="#6e7681" text-anchor="end">256-bit register &#8212; one FMA per cycle</text>
+<rect x="0" y="0" width="1600" height="578" fill="url(#vignette)"/>
 </svg>
