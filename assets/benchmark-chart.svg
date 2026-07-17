@@ -1,16 +1,91 @@
-<svg viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg" font-family="'JetBrains Mono','SF Mono',Consolas,'Courier New',monospace">
+<svg viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg" font-family="'DejaVu Sans Mono','Liberation Mono',Consolas,monospace">
 
-<rect x="0" y="0" width="1200" height="640" fill="#0b0d12"/>
+<defs>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="2.6" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="2" fill="#000000"/>
+    <rect y="2" width="4" height="2" fill="#001a00"/>
+  </pattern>
+  <radialGradient id="vignette" cx="50%" cy="42%" r="75%">
+    <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+    <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+  </radialGradient>
+</defs>
 
-<text x="64" y="46" font-size="22" font-weight="600" fill="#e6edf3">SIMD Speedup over Scalar Baseline</text>
-<text x="64" y="68" font-size="13" fill="#8b949e">GEMV kernel &#183; AVX2 + FMA vs naive scalar, measured</text>
+<style>
+@keyframes flicker {
+  0%   { opacity: 1; }
+  42%  { opacity: 0.965; }
+  44%  { opacity: 1; }
+  71%  { opacity: 0.985; }
+  100% { opacity: 1; }
+}
+@keyframes scandrift {
+  0%   { transform: translateY(0px); }
+  100% { transform: translateY(40px); }
+}
+@keyframes fadeUp {
+  0%   { opacity: 0; transform: translateY(5px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes growBar {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+#crt-content { animation: flicker 5.3s ease-in-out infinite; }
+#scan-layer  { animation: scandrift 6s linear infinite; }
 
-<rect x="980" y="30" width="10" height="10" fill="#58a6ff"/>
-<text x="996" y="39" font-size="11.5" fill="#8b949e">measured</text>
-<rect x="980" y="48" width="10" height="10" fill="#30363d"/>
-<text x="996" y="57" font-size="11.5" fill="#8b949e">noise outlier</text>
+.fade { opacity: 0; animation: fadeUp 0.5s ease-out forwards; }
+.bar  { transform-box: fill-box; transform-origin: 0% 50%; transform: scaleX(0);
+        animation: growBar 0.6s cubic-bezier(.2,.7,.3,1) forwards; }
 
-<g stroke="#1c2128" stroke-width="1">
+.t-title   { animation-delay: 0.05s; }
+.t-sub     { animation-delay: 0.20s; }
+.t-leg1    { animation-delay: 0.32s; }
+.t-leg2    { animation-delay: 0.40s; }
+.t-grid    { animation-delay: 0.15s; }
+.t-axis    { animation-delay: 0.30s; }
+.t-ticks   { animation-delay: 0.40s; }
+
+.bar1  { animation-delay: 0.60s; }
+.lab1  { animation-delay: 1.05s; }
+.bar2  { animation-delay: 0.82s; }
+.lab2  { animation-delay: 1.27s; }
+.bar3  { animation-delay: 1.04s; }
+.lab3  { animation-delay: 1.49s; }
+.bar4  { animation-delay: 1.26s; }
+.lab4  { animation-delay: 1.71s; }
+.bar5  { animation-delay: 1.48s; }
+.lab5  { animation-delay: 1.93s; }
+.bar6  { animation-delay: 1.70s; }
+.lab6  { animation-delay: 2.15s; }
+.bar7  { animation-delay: 1.92s; }
+.lab7  { animation-delay: 2.37s; }
+.bar8  { animation-delay: 2.14s; }
+.lab8  { animation-delay: 2.59s; }
+
+.t-refline { animation-delay: 2.85s; }
+.t-reflabel{ animation-delay: 2.95s; }
+.t-footer  { animation-delay: 3.15s; }
+</style>
+
+<rect x="0" y="0" width="1200" height="640" fill="#020a02"/>
+<g id="scan-layer"><rect x="-10" y="-10" width="1220" height="700" fill="url(#scanlines)" opacity="0.45"/></g>
+
+<g id="crt-content" filter="url(#glow)">
+
+<text class="fade t-title" x="64" y="46" font-size="22" font-weight="700" fill="#3dff5c">SIMD Speedup over Scalar Baseline</text>
+<text class="fade t-sub" x="64" y="68" font-size="13" fill="#1a8a2e">GEMV kernel &#183; AVX2 + FMA vs naive scalar, measured</text>
+
+<rect class="fade t-leg1" x="980" y="30" width="10" height="10" fill="#3dff5c"/>
+<text class="fade t-leg1" x="996" y="39" font-size="11.5" fill="#1a8a2e">measured</text>
+<rect class="fade t-leg2" x="980" y="48" width="10" height="10" fill="#1a8a2e"/>
+<text class="fade t-leg2" x="996" y="57" font-size="11.5" fill="#1a8a2e">noise outlier</text>
+
+<g class="fade t-grid" stroke="#123016" stroke-width="1">
 <line x1="160" y1="110" x2="160" y2="576"/>
 <line x1="320" y1="110" x2="320" y2="576"/>
 <line x1="480" y1="110" x2="480" y2="576"/>
@@ -20,11 +95,11 @@
 <line x1="1120" y1="110" x2="1120" y2="576"/>
 </g>
 
-<line x1="800" y1="100" x2="800" y2="576" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7"/>
-<text x="800" y="92" font-size="11.5" fill="#58a6ff" text-anchor="middle">8&#215; ceiling (256-bit / fp32)</text>
+<line class="fade t-refline" x1="800" y1="100" x2="800" y2="576" stroke="#3dff5c" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.7"/>
+<text class="fade t-reflabel" x="800" y="92" font-size="11.5" fill="#3dff5c" text-anchor="middle">8&#215; ceiling (256-bit / fp32)</text>
 
-<line x1="160" y1="576" x2="1120" y2="576" stroke="#30363d" stroke-width="1.5"/>
-<g font-size="11.5" fill="#6e7681" text-anchor="middle">
+<line class="fade t-axis" x1="160" y1="576" x2="1120" y2="576" stroke="#1a8a2e" stroke-width="1.5"/>
+<g class="fade t-ticks" font-size="11.5" fill="#1a8a2e" text-anchor="middle">
 <text x="160" y="596">0&#215;</text>
 <text x="320" y="596">2&#215;</text>
 <text x="480" y="596">4&#215;</text>
@@ -34,54 +109,56 @@
 <text x="1120" y="596">12&#215;</text>
 </g>
 
-<g>
-<text x="150" y="158" font-size="13" fill="#8b949e" text-anchor="end">64&#215;64</text>
-<rect x="160" y="140" width="929.6" height="28" rx="2" fill="#58a6ff"/>
-<text x="1099.6" y="158" font-size="13" font-weight="600" fill="#e6edf3">11.62&#215;</text>
+<g class="fade lab1">
+<text x="150" y="158" font-size="13" fill="#1a8a2e" text-anchor="end">64&#215;64</text>
+<text x="1099.6" y="158" font-size="13" font-weight="700" fill="#3dff5c">11.62&#215;</text>
 </g>
+<rect class="bar bar1" x="160" y="140" width="929.6" height="28" rx="2" fill="#3dff5c"/>
 
-<g>
-<text x="150" y="212" font-size="13" fill="#8b949e" text-anchor="end">128&#215;128</text>
-<rect x="160" y="194" width="859.2" height="28" rx="2" fill="#58a6ff"/>
-<text x="1029.2" y="212" font-size="13" font-weight="600" fill="#e6edf3">10.74&#215;</text>
+<g class="fade lab2">
+<text x="150" y="212" font-size="13" fill="#1a8a2e" text-anchor="end">128&#215;128</text>
+<text x="1029.2" y="212" font-size="13" font-weight="700" fill="#3dff5c">10.74&#215;</text>
 </g>
+<rect class="bar bar2" x="160" y="194" width="859.2" height="28" rx="2" fill="#3dff5c"/>
 
-<g>
-<text x="150" y="266" font-size="13" fill="#8b949e" text-anchor="end">256&#215;256</text>
-<rect x="160" y="248" width="390.4" height="28" rx="2" fill="#30363d"/>
-<text x="560.4" y="266" font-size="13" font-weight="600" fill="#8b949e">4.88&#215; (noise)</text>
+<g class="fade lab3">
+<text x="150" y="266" font-size="13" fill="#1a8a2e" text-anchor="end">256&#215;256</text>
+<text x="560.4" y="266" font-size="13" font-weight="700" fill="#1a8a2e">4.88&#215; (noise)</text>
 </g>
+<rect class="bar bar3" x="160" y="248" width="390.4" height="28" rx="2" fill="#1a8a2e"/>
 
-<g>
-<text x="150" y="320" font-size="13" fill="#8b949e" text-anchor="end">512&#215;512</text>
-<rect x="160" y="302" width="637.6" height="28" rx="2" fill="#58a6ff"/>
-<text x="807.6" y="320" font-size="13" font-weight="600" fill="#e6edf3">7.97&#215;</text>
+<g class="fade lab4">
+<text x="150" y="320" font-size="13" fill="#1a8a2e" text-anchor="end">512&#215;512</text>
+<text x="807.6" y="320" font-size="13" font-weight="700" fill="#3dff5c">7.97&#215;</text>
 </g>
+<rect class="bar bar4" x="160" y="302" width="637.6" height="28" rx="2" fill="#3dff5c"/>
 
-<g>
-<text x="150" y="374" font-size="13" fill="#8b949e" text-anchor="end">1024&#215;1024</text>
-<rect x="160" y="356" width="689.6" height="28" rx="2" fill="#58a6ff"/>
-<text x="859.6" y="374" font-size="13" font-weight="600" fill="#e6edf3">8.62&#215;</text>
+<g class="fade lab5">
+<text x="150" y="374" font-size="13" fill="#1a8a2e" text-anchor="end">1024&#215;1024</text>
+<text x="859.6" y="374" font-size="13" font-weight="700" fill="#3dff5c">8.62&#215;</text>
 </g>
+<rect class="bar bar5" x="160" y="356" width="689.6" height="28" rx="2" fill="#3dff5c"/>
 
-<g>
-<text x="150" y="428" font-size="13" fill="#8b949e" text-anchor="end">2048&#215;2048</text>
-<rect x="160" y="410" width="607.2" height="28" rx="2" fill="#58a6ff"/>
-<text x="777.2" y="428" font-size="13" font-weight="600" fill="#e6edf3">7.59&#215;</text>
+<g class="fade lab6">
+<text x="150" y="428" font-size="13" fill="#1a8a2e" text-anchor="end">2048&#215;2048</text>
+<text x="777.2" y="428" font-size="13" font-weight="700" fill="#3dff5c">7.59&#215;</text>
 </g>
+<rect class="bar bar6" x="160" y="410" width="607.2" height="28" rx="2" fill="#3dff5c"/>
 
-<g>
-<text x="150" y="482" font-size="13" fill="#8b949e" text-anchor="end">4096&#215;4096</text>
-<rect x="160" y="464" width="520.0" height="28" rx="2" fill="#58a6ff"/>
-<text x="690.0" y="482" font-size="13" font-weight="600" fill="#e6edf3">6.50&#215;</text>
+<g class="fade lab7">
+<text x="150" y="482" font-size="13" fill="#1a8a2e" text-anchor="end">4096&#215;4096</text>
+<text x="690.0" y="482" font-size="13" font-weight="700" fill="#3dff5c">6.50&#215;</text>
 </g>
+<rect class="bar bar7" x="160" y="464" width="520.0" height="28" rx="2" fill="#3dff5c"/>
 
-<g>
-<text x="150" y="536" font-size="13" fill="#8b949e" text-anchor="end">4096&#215;1000</text>
-<rect x="160" y="518" width="592.0" height="28" rx="2" fill="#58a6ff"/>
-<text x="762.0" y="536" font-size="13" font-weight="600" fill="#e6edf3">7.40&#215;</text>
+<g class="fade lab8">
+<text x="150" y="536" font-size="13" fill="#1a8a2e" text-anchor="end">4096&#215;1000</text>
+<text x="762.0" y="536" font-size="13" font-weight="700" fill="#3dff5c">7.40&#215;</text>
 </g>
+<rect class="bar bar8" x="160" y="518" width="592.0" height="28" rx="2" fill="#3dff5c"/>
 
-<text x="64" y="620" font-size="11.5" fill="#6e7681">Averaged over hundreds&#8211;thousands of iterations per size. Compute-bound near 8&#215; ceiling at small sizes &#8594; bandwidth-bound as matrices outgrow cache.</text>
+<text class="fade t-footer" x="64" y="620" font-size="11.5" fill="#1a8a2e">Averaged over hundreds&#8211;thousands of iterations per size. Compute-bound near 8&#215; ceiling at small sizes &#8594; bandwidth-bound as matrices outgrow cache.</text>
 
+</g>
+<rect x="0" y="0" width="1200" height="640" fill="url(#vignette)"/>
 </svg>
