@@ -12,7 +12,7 @@ matvec_simd.o: src/matvec_simd.asm
 	$(ASM) $(ASMFLAGS) src/matvec_simd.asm -o matvec_simd.o
 
 matvec_bench: bench/main.c matvec_scalar.o matvec_simd.o
-	$(CC) $(CFLAGS) bench/main.c matvec_scalar.o matvec_simd.o -lm -o matvec_bench
+	$(CC) $(CFLAGS) bench/main.c matvec_scalar.o matvec_simd.o -lm -lopenblas -o matvec_bench
 
 clean:
 	rm -f *.o matvec_bench
